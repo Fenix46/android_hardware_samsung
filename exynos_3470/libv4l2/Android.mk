@@ -22,8 +22,8 @@ LOCAL_SRC_FILES := \
 	exynos_mc.c
 
 LOCAL_C_INCLUDES := \
-	$(SAMSUNG_HW_PATH)/include \
-	$(SAMSUNG_HW_PATH)/libexynosutils
+	hardware/samsung/exynos_3470/include \
+	hardware/samsung/exynos_3470/libexynosutils
 
 LOCAL_SHARED_LIBRARIES := \
 	liblog \

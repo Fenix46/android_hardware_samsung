@@ -17,7 +17,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-MOBICORE_PATH := $(SAMSUNG_HW_PATH)/mobicore
+MOBICORE_PATH := hardware/samsung/exynos_3470/mobicore
 
 LOCAL_MODULE := keystore.$(TARGET_BOOTLOADER_BOARD_NAME)
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw

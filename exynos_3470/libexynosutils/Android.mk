@@ -20,7 +20,7 @@ LOCAL_SHARED_LIBRARIES := liblog libutils libcutils
 LOCAL_CFLAGS += -DEXYNOS_PLATFORM_ON_ANDROID
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
-LOCAL_C_INCLUDES += $(SAMSUNG_HW_PATH)/include
+LOCAL_C_INCLUDES += hardware/samsung/exynos_3470/include
 LOCAL_C_INCLUDES += framework/base/include
 
 LOCAL_SRC_FILES := ExynosMutex.cpp \
@@ -31,7 +31,7 @@ LOCAL_MODULE := libexynosutils
 
 ifeq ($(TARGET_BOARD_PLATFORM), exynos3)
 LOCAL_SRC_FILES += exynos5_format_v4l2.c
-LOCAL_C_INCLUDES += $(SAMSUNG_HW_PATH)/include
+LOCAL_C_INCLUDES += hardware/samsung/exynos_3470/include
 endif
 
 include $(BUILD_SHARED_LIBRARY)

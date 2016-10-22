@@ -28,10 +28,10 @@ LOCAL_SRC_FILES	+= 	\
 	tlc_communication.cpp \
 	content_protect.cpp \
 
-LOCAL_C_INCLUDES := $(SAMSUNG_HW_PATH)/include
+LOCAL_C_INCLUDES := hardware/samsung/exynos_3470/include
 
 LOCAL_SHARED_LIBRARIES += libMcClient
 
-include $(SAMSUNG_HW_PATH)/mobicore/common/LogWrapper/Android.mk
+include hardware/samsung/exynos_3470/mobicore/common/LogWrapper/Android.mk
 
 include $(BUILD_STATIC_LIBRARY)

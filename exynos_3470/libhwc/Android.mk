@@ -23,8 +23,8 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libEGL libGLESv1_CM libhardware \
 LOCAL_CFLAGS += -DLOG_TAG=\"hwcomposer\"
 
 LOCAL_C_INCLUDES := \
-    $(SAMSUNG_HW_PATH)/include \
-    $(SAMSUNG_HW_PATH)/libexynosutils
+    hardware/samsung/exynos_3470/include \
+    hardware/samsung/exynos_3470/libexynosutils
 
 LOCAL_SRC_FILES := hwc.cpp
 

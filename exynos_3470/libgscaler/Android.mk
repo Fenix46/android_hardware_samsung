@@ -26,8 +26,8 @@ LOCAL_SHARED_LIBRARIES += libMcClient
 LOCAL_STATIC_LIBRARIES := libsecurepath
 
 LOCAL_C_INCLUDES := \
-	$(SAMSUNG_HW_PATH)/include \
-	$(SAMSUNG_HW_PATH)/libexynosutils
+	hardware/samsung/exynos_3470/include \
+	hardware/samsung/exynos_3470/libexynosutils
 
 LOCAL_SRC_FILES := exynos_gscaler.c
 LOCAL_MODULE := libexynosgscaler

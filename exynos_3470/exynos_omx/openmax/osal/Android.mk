@@ -40,9 +40,9 @@ LOCAL_C_INCLUDES := $(EXYNOS_OMX_INC)/khronos \
 	$(EXYNOS_OMX_COMPONENT)/video/enc \
 	$(EXYNOS_OMX_TOP)/video/dec \
 	$(EXYNOS_OMX_TOP)/video/enc \
-	$(SAMSUNG_HW_PATH)/include \
+	hardware/samsung/exynos_3470/include \
 	frameworks/native/include/media/hardware \
 	frameworks/native/include/media/openmax \
-	$(SAMSUNG_HW_PATH)/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
+	hardware/samsung/exynos_3470/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
 
 include $(BUILD_STATIC_LIBRARY)

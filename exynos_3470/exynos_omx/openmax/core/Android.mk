@@ -21,6 +21,6 @@ LOCAL_C_INCLUDES := $(EXYNOS_OMX_INC)/khronos \
 	$(EXYNOS_OMX_INC)/exynos \
 	$(EXYNOS_OMX_TOP)/osal \
 	$(EXYNOS_OMX_TOP)/component/common \
-	$(SAMSUNG_HW_PATH)/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
+	hardware/samsung/exynos_3470/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
 
 include $(BUILD_SHARED_LIBRARY)

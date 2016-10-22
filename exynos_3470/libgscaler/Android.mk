@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(filter-out exynos3,$(TARGET_BOARD_PLATFORM)),)
+ifeq ($(TARGET_BOARD_PLATFORM),exynos3)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
@@ -27,7 +27,7 @@ LOCAL_STATIC_LIBRARIES := libsecurepath
 
 LOCAL_C_INCLUDES := \
 	hardware/samsung/exynos_3470/include \
-	hardware/samsung/exynos_3470/multimedia/libexynosutils
+	hardware/samsung/exynos_3470/libexynosutils
 
 LOCAL_SRC_FILES := exynos_gscaler.c
 LOCAL_MODULE := libexynosgscaler

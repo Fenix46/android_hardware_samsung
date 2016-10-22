@@ -11,8 +11,8 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 
 LOCAL_C_INCLUDES := \
     system/core/include \
-    hardware/samsung/exynos_3470/multimedia/$(OMX_NAME)_omx/openmax/include/khronos \
-    hardware/samsung/exynos_3470/multimedia/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+    hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/khronos \
+    hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
     hardware/samsung/exynos_3470/include
 
 LOCAL_CFLAGS := \
@@ -34,9 +34,9 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES := \
 	hardware/samsung/exynos_3470/include \
-	hardware/samsung/exynos_3470/multimedia/$(OMX_NAME)_omx/openmax/include/khronos \
-	hardware/samsung/exynos_3470/multimedia/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
-	hardware/samsung/exynos_3470/multimedia/libexynosutils
+	hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/khronos \
+	hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+	hardware/samsung/exynos_3470/libexynosutils
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2011 The Android Open Source Project
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,24 +13,21 @@
 # limitations under the License.
 
 LOCAL_PATH:= $(call my-dir)
+# HAL module implemenation, not prelinked and stored in
+# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
 
 include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := \
-	exynos_v4l2.c \
-	exynos_subdev.c \
-	exynos_mc.c
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils libEGL libGLESv1_CM libhardware \
+    libhardware_legacy libion_exynos libutils libsync libexynosgscaler libexynosv4l2 libMcClient
+LOCAL_CFLAGS += -DLOG_TAG=\"hwcomposer\"
 
 LOCAL_C_INCLUDES := \
-	hardware/samsung/exynos_3470/include \
-	hardware/samsung/exynos_3470/multimedia/libexynosutils
+    hardware/samsung/exynos_3470/include \
+    hardware/samsung/exynos_3470/libexynosutils
 
-LOCAL_SHARED_LIBRARIES := \
-	liblog \
-	libutils \
-	libexynosutils 
+LOCAL_SRC_FILES := hwc.cpp
 
-LOCAL_MODULE := libexynosv4l2
-LOCAL_MODULE_TAGS := eng
-
+LOCAL_MODULE := hwcomposer.$(TARGET_BOOTLOADER_BOARD_NAME)
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)

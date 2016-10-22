@@ -45,7 +45,7 @@ LOCAL_C_INCLUDES := $(EXYNOS_OMX_INC)/khronos \
 	$(EXYNOS_OMX_COMPONENT)/common \
 	$(EXYNOS_OMX_COMPONENT)/video/dec \
 	hardware/samsung/exynos_3470/include \
-	hardware/samsung/exynos_3470/multimedia/libcsc \
-	hardware/samsung/exynos_3470/multimedia/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
+	hardware/samsung/exynos_3470/libcsc \
+	hardware/samsung/exynos_3470/exynos_omx/codecs/exynos_codecs/video/exynos3/mfc_v4l2/include
 
 include $(BUILD_SHARED_LIBRARY)

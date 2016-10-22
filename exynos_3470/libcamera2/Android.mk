@@ -9,7 +9,7 @@ LOCAL_CLANG_CFLAGS += -Wno-c++11-narrowing
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
 
 LOCAL_C_INCLUDES += \
-	hardware/samsung/exynos_3470/include \
+	$(SAMSUNG_HW_PATH)/include \
 	frameworks/native/include \
 	system/media/camera/include
 

@@ -11,9 +11,9 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 
 LOCAL_C_INCLUDES := \
     system/core/include \
-    hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/khronos \
-    hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
-    hardware/samsung/exynos_3470/include
+    $(SAMSUNG_HW_PATH)/$(OMX_NAME)_omx/openmax/include/khronos \
+    $(SAMSUNG_HW_PATH)/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+    $(SAMSUNG_HW_PATH)/include
 
 LOCAL_CFLAGS := \
     -DUSE_SAMSUNG_COLORFORMAT \
@@ -33,10 +33,10 @@ LOCAL_SRC_FILES := \
 	csc.c
 
 LOCAL_C_INCLUDES := \
-	hardware/samsung/exynos_3470/include \
-	hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/khronos \
-	hardware/samsung/exynos_3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
-	hardware/samsung/exynos_3470/libexynosutils
+	$(SAMSUNG_HW_PATH)/include \
+	$(SAMSUNG_HW_PATH)/$(OMX_NAME)_omx/openmax/include/khronos \
+	$(SAMSUNG_HW_PATH)/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+	$(SAMSUNG_HW_PATH)/libexynosutils
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 
@@ -53,7 +53,7 @@ LOCAL_SHARED_LIBRARIES := liblog libexynosutils
 
 LOCAL_CFLAGS += -DUSE_SAMSUNG_COLORFORMAT
 
-LOCAL_C_INCLUDES += hardware/samsung/exynos_3470/include
+LOCAL_C_INCLUDES += $(SAMSUNG_HW_PATH)/include
 LOCAL_CFLAGS += -DENABLE_GSCALER -DENABLE_G2D
 LOCAL_SHARED_LIBRARIES += libexynosgscaler
 

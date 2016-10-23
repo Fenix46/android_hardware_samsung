@@ -12,9 +12,9 @@ include $(foreach client_dirs,$(SAMSUNG_DEFAULT_DIRS),$(SAMSUNG_HW_PATH)/$(clien
 
 ifeq ($(TARGET_USE_LESS_BLOB_FILES),true)
 SAMSUNG_BLOB_LESS_DIRS := exynos_omx libcamera2 libkeymaster libstagefrighthw \
-                          libcsc libswconverter libexynosutils libhwjpeg \
+                          libcsc libgscaler libswconverter libexynosutils libhwjpeg \
                           libsecurepath libv4l2 modemloader mobicore macloader \
-                          wifiloader
+                          wifiloader libion_exynos
                           
 include $(foreach client_dirs,$(SAMSUNG_BLOB_LESS_DIRS),$(SAMSUNG_HW_PATH)/$(client_dirs)/Android.mk)
     #include $(LOCAL_PATH)/exynos_omx/Android.mk

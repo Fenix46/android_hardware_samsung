@@ -12,26 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-LOCAL_PATH := $(call my-dir)
-
-# HAL module implemenation stored in
-# hw/<OVERLAY_HARDWARE_MODULE_ID>.<ro.product.board>.so
+LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
+# HAL module implemenation stored in
+# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
 
-LOCAL_C_INCLUDES := hardware/samsung/exynos_3470/include
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../include
 
-LOCAL_SRC_FILES := 	\
-	gralloc.cpp 	\
-	framebuffer.cpp \
-	mapper.cpp
-	
-LOCAL_MODULE := gralloc.$(TARGET_BOOTLOADER_BOARD_NAME)
-LOCAL_CFLAGS:= -DLOG_TAG=\"gralloc\"
+LOCAL_SRC_FILES:= \
+	libion.cpp
+
+LOCAL_CFLAGS += -DGAIA_FW_BETA
+
+LOCAL_MODULE := libion_exynos
+
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_OWNER := samsung_arm
 
 include $(BUILD_SHARED_LIBRARY)

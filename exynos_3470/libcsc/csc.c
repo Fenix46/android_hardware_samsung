@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include <utils/Log.h>
 #include <system/graphics.h>
-
+#include <string.h>
 #include "csc.h"
 #include "exynos_format.h"
 #include "swconverter.h"

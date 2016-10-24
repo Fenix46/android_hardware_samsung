@@ -1,0 +1,1 @@
+#define MOBICORE_COMPONENT_BUILD_TAG "*** SAMSUNG Exynos 3470 MC1.2 V005 release ###"

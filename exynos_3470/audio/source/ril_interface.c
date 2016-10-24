@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define ALOG_TAG "audio_hw_primary"
+#define ALOG_TAG "Audio_HW_Primary"
 /*#define ALOG_NDEBUG 0*/
 
 #include <dlfcn.h>

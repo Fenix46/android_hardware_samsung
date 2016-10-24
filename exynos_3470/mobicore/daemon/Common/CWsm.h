@@ -5,7 +5,7 @@
  * World shared memory definitions.
  *
  * <!-- Copyright Giesecke & Devrient GmbH 2009 - 2012 -->
- *
+ * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -38,19 +38,21 @@
 #include "McTypes.h"
 
 
-class CWsm
-{
-public:
-    addr_t virtAddr;
-    uint32_t len;
-    uint32_t handle;
-    addr_t physAddr;
+class CWsm {
 
-    CWsm(addr_t virtAddr,
-         uint32_t  len,
-         uint32_t  handle,
-         // this may be unknown, so is can be omitted.
-         addr_t    physAddr = NULL) :
+public:
+
+	addr_t virtAddr;
+	uint32_t len;
+	uint32_t handle;
+	addr_t physAddr;
+
+    CWsm(
+        addr_t    virtAddr,
+        uint32_t  len,
+        uint32_t  handle,
+        addr_t    physAddr = NULL // this may be unknown, so is can be omitted.
+    ) :
         virtAddr(virtAddr),
         len(len),
         handle(handle),

@@ -26,7 +26,7 @@
  * SUCH DAMAGE.
  */
 
-#define LOG_TAG "AudioZoom"
+#define LOG_TAG "AudioZoom_Wrapper"
 
 #include <log/log.h>
 

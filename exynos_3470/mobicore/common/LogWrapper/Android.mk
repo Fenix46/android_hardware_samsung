@@ -12,4 +12,4 @@ LOCAL_SHARED_LIBRARIES += liblog
 # Enable logging to logcat per default
 LOCAL_CFLAGS += -DLOG_ANDROID
 
-LOCAL_C_INCLUDES += hardware/samsung/exynos_3470/mobicore/common/LogWrapper
+LOCAL_C_INCLUDES += $(call my-dir)

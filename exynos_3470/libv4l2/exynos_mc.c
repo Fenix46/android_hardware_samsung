@@ -44,7 +44,7 @@
 #include "exynos_v4l2.h"
 
 //#define LOG_NDEBUG 0
-#define LOG_TAG "libexynosv4l2-mc"
+#define LOG_TAG "Exynos V4L2 MC"
 #include <utils/Log.h>
 
 static inline unsigned int __media_entity_type(struct media_entity *entity)

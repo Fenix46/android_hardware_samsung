@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "macloader"
+#define LOG_TAG "MACLoader"
 #define LOG_NDEBUG 0
 
 #include <stdio.h>

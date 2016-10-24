@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 #include "tlwvdrm_api.h"
-#define LOG_TAG "drm_content_protect"
+#define LOG_TAG "DRM Content Protect"
 #include "log.h"
 #include "tlc_communication.h"
 #include "content_protect.h"

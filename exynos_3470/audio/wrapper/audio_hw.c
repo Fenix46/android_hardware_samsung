@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "AudioWrapper"
+#define LOG_TAG "Audio_HW_Primary_Wrapper"
 //#define LOG_NDEBUG 0
 
 #include <errno.h>

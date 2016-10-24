@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "ConsumerIrHal"
+#define LOG_TAG "Consumer IRDA HAL"
 
 #include <stdlib.h>
 #include <malloc.h>

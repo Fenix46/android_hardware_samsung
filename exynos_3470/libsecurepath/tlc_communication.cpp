@@ -18,7 +18,7 @@
 
 #include "tlc_communication.h"
 
-#define LOG_TAG "tlc_communication"
+#define LOG_TAG "TLC Communication"
 #include "log.h"
 
 mcResult_t tlc_open(mc_comm_ctx *comm_ctx) {

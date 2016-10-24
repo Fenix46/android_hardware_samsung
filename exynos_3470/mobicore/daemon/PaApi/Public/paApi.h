@@ -1,6 +1,8 @@
-/** @addtogroup MCD_MCDIMPL_DAEMON_DEV
- * @{
+/**
  * @file
+ * Proivisioning Agent API.
+ *
+ * This header file describes the Provisioning Agent API.
  *
  * <!-- Copyright Giesecke & Devrient GmbH 2009 - 2012 -->
  * 
@@ -27,48 +29,16 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * @defgroup PA_API Provisioning Agent API
+ * @defgroup TLC_CONTENT_MANAGER Content Manager API
+ * @ingroup PA_API
+ *
+ * @defgroup MCD_MCDIMPL_DAEMON_REG Registry API
+ * @ingroup PA_API
  */
-#ifndef TRUSTLETSESSION_H_
-#define TRUSTLETSESSION_H_
 
-#include "NotificationQueue.h"
-
-#include "Connection.h"
-#include <queue>
+#include "tlcCmApi.h"
+#include "MobiCoreRegistry.h"
 
 
-class TrustletSession {
-
-public:
-
-	TrustletSession(
-		Connection *deviceConnection,
-		uint32_t sessionId
-	);
-
-	~TrustletSession(
-		void
-	);
-	
-	void queueNotification(
-		notification_t *notification
-	);
-	
-	void processQueuedNotifications(
-		void
-	);
-
-	uint32_t sessionId;
-	uint32_t sessionMagic; // Random data
-	Connection *deviceConnection;
-	Connection *notificationConnection;
-private:
-	std::queue<notification_t> notifications;
-};
-
-typedef std::list<TrustletSession*> trustletSessionList_t;
-typedef trustletSessionList_t::iterator trustletSessionIterator_t;
-
-#endif /* TRUSTLETSESSION_H_ */
-
-/** @} */

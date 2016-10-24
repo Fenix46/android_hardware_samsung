@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
 
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../include
+LOCAL_C_INCLUDES += hardware/samsung/exynos_3470/include
 
 LOCAL_SRC_FILES:= \
 	libion.cpp
@@ -28,6 +28,6 @@ LOCAL_CFLAGS += -DGAIA_FW_BETA
 
 LOCAL_MODULE := libion_exynos
 
-LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)

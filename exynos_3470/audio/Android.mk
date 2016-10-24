@@ -1,4 +1,4 @@
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH:= $(call my-dir)
-# HAL module implemenation stored in
-# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
-include $(CLEAR_VARS)
+LOCAL_PATH := $(call my-dir)
 
-LOCAL_SRC_FILES := lights.c
+ifeq ($(TARGET_EXYNOS3_AUDIO_FROM_SOURCE),true)
+audio_dirs := source
+else
+audio_dirs := wrapper
+endif
 
+include $(call all-named-subdir-makefiles,$(audio_dirs))
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-
-LOCAL_SHARED_LIBRARIES := liblog
-
-LOCAL_MODULE := lights.$(TARGET_BOOTLOADER_BOARD_NAME)
-
-LOCAL_MODULE_TAGS := eng
-
-include $(BUILD_SHARED_LIBRARY)

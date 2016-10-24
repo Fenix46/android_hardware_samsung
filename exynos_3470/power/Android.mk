@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2014, The CyanogenMod Project <http://www.cyanogenmod.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,20 +14,16 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_POWERHAL_VARIANT),samsung)
+ifeq ($(TARGET_POWERHAL_VARIANT),exynos3)
 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := power.$(TARGET_BOOTLOADER_BOARD_NAME)
-LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SRC_FILES := power.c
-LOCAL_MODULE_TAGS := optional
-
-ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
-    LOCAL_CFLAGS := -DDT2W_PATH=\"$(TARGET_DT2W_PATH)\"
-endif
+LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif
+endif # TARGET_POWERHAL_VARIANT == exynos3

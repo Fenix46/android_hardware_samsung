@@ -39,7 +39,7 @@
 #include "ExcDevice.h"
 #include "Connection.h"
 #include "TrustletSession.h"
-
+#include <cstddef>
 #include "MobiCoreDevice.h"
 #include "Mci/mci.h"
 #include "mcLoadFormat.h"

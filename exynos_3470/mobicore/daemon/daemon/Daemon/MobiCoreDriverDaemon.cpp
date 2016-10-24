@@ -35,7 +35,7 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <stdio.h>
-
+#include <cstddef>
 #include "MobiCoreDriverApi.h"
 #include "MobiCoreDriverCmd.h"
 #include "mcVersion.h"

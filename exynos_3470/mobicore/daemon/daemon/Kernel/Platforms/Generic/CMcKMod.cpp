@@ -37,7 +37,7 @@
 #include <errno.h>
 #include <inttypes.h>
 #include <cstring>
-
+#include <cstddef>
 #include "McTypes.h"
 #include "mc_linux.h"
 #include "mcVersionHelper.h"

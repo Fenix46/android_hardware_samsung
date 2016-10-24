@@ -37,7 +37,7 @@
 #include <stdbool.h>
 #include <list>
 #include "assert.h"
-
+#include <cstddef>
 #include "public/MobiCoreDriverApi.h"
 
 #include "mc_linux.h"

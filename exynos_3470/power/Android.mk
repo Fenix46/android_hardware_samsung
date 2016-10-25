@@ -14,7 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_POWERHAL_VARIANT),exynos3)
+ifeq ($(TARGET_POWERHAL_VARIANT),universal3470)
 
 include $(CLEAR_VARS)
 
@@ -26,4 +26,4 @@ LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif # TARGET_POWERHAL_VARIANT == exynos3
+endif # TARGET_POWERHAL_VARIANT == universal3470

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_BOARD_PLATFORM),exynos3)
+ifeq ($(TARGET_BOARD_PLATFORM),universal3470)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)

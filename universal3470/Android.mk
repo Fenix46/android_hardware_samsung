@@ -1,34 +1,33 @@
-LOCAL_PATH := $(call my-dir)
+SAMSUNG_HW_PATH:= $(call my-dir)
+
 include $(CLEAR_VARS)
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),universal3470)
-
-include $($(LOCAL_PATH)/audio/Android.mk)
-include $($(LOCAL_PATH)/consumerir/Android.mk)
-include $($(LOCAL_PATH)/fingerprint/Android.mk)
-include $($(LOCAL_PATH)/liblights/Android.mk)
-include $($(LOCAL_PATH)/libsensors/Android.mk)
-include $($(LOCAL_PATH)/power/Android.mk)
-include $($(LOCAL_PATH)/soundtrigger/Android.mk)
-include $($(LOCAL_PATH)/ril/Android.mk)
+include $(SAMSUNG_HW_PATH)/audio/Android.mk
+include $(SAMSUNG_HW_PATH)/consumerir/Android.mk
+include $(SAMSUNG_HW_PATH)/fingerprint/Android.mk
+include $(SAMSUNG_HW_PATH)/liblights/Android.mk
+include $(SAMSUNG_HW_PATH)/libsensors/Android.mk
+include $(SAMSUNG_HW_PATH)/power/Android.mk
+include $(SAMSUNG_HW_PATH)/soundtrigger/Android.mk
+include $(SAMSUNG_HW_PATH)/ril/Android.mk
 
 ifeq ($(BOARD_USES_BLOB_LESS),true)
 
-include $($(LOCAL_PATH)/libexynosutils/Android.mk)
-include $($(LOCAL_PATH)/libhwjpeg/Android.mk)
-include $($(LOCAL_PATH)/libswconverter/Android.mk)
-include $($(LOCAL_PATH)/libcamera2/Android.mk)
-include $($(LOCAL_PATH)/mobicore/Android.mk)
-include $($(LOCAL_PATH)/libgscaler/Android.mk)
-include $($(LOCAL_PATH)/libion_exynos/Android.mk)
-include $($(LOCAL_PATH)/libsecurepath/Android.mk)
-include $($(LOCAL_PATH)/libv4l2/Android.mk)
-include $($(LOCAL_PATH)/modemloader/Android.mk)
-include $($(LOCAL_PATH)/libcsc/Android.mk)
-include $($(LOCAL_PATH)/libhwc/Android.mk)
-include $($(LOCAL_PATH)/libstagefrighthw/Android.mk)
-include $($(LOCAL_PATH)/macloader/Android.mk)
-include $($(LOCAL_PATH)/wifiloader/Android.mk)
+include $(SAMSUNG_HW_PATH)/libexynosutils/Android.mk
+include $(SAMSUNG_HW_PATH)/libhwjpeg/Android.mk
+include $(SAMSUNG_HW_PATH)/libswconverter/Android.mk
+include $(SAMSUNG_HW_PATH)/libcamera2/Android.mk
+include $(SAMSUNG_HW_PATH)/mobicore/Android.mk
+include $(SAMSUNG_HW_PATH)/libgscaler/Android.mk
+include $(SAMSUNG_HW_PATH)/libion_exynos/Android.mk
+include $(SAMSUNG_HW_PATH)/libsecurepath/Android.mk
+include $(SAMSUNG_HW_PATH)/libv4l2/Android.mk
+include $(SAMSUNG_HW_PATH)/modemloader/Android.mk
+include $(SAMSUNG_HW_PATH)/libcsc/Android.mk
+include $(SAMSUNG_HW_PATH)/libhwc/Android.mk
+include $(SAMSUNG_HW_PATH)/libstagefrighthw/Android.mk
+include $(SAMSUNG_HW_PATH)/macloader/Android.mk
+include $(SAMSUNG_HW_PATH)/wifiloader/Android.mk
+include $(SAMSUNG_HW_PATH)/gralloc/Android.mk
 
-endif
 endif

@@ -54,7 +54,7 @@ MC_CHECK_DATA_OBJECT_VERSION(CONTAINER, 2, 0);
 
 using namespace std;
 
-static const string MC_REGISTRY_DEFAULT_PATH = "/system/app/mcRegistry";
+static const string MC_REGISTRY_DEFAULT_PATH = "/data/app/mcRegistry";
 static const string AUTH_TOKEN_FILE_NAME = "00000000.authtokcont";
 static const string ROOT_FILE_NAME = "00000000.rootcont";
 static const string SP_CONT_FILE_EXT = ".spcont";

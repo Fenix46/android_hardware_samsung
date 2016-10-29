@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,9 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
-#define LOG_TAG "lights"
+#define LOG_TAG "SamsungLightsHAL"
+/* #define LOG_NDEBUG 0 */
+
 #include <cutils/log.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,22 +25,20 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
+
 #include <sys/ioctl.h>
 #include <sys/types.h>
+
 #include <hardware/lights.h>
 
-/*
- * TODO: use /sys/class/sec/led/led_pattern for colored blink patterns (e.g. startup)
- * See: /drivers/leds/leds-ktd2026.c (ktd2026_start_led_pattern)
- */
+#define PANEL_FILE "/sys/class/backlight/panel/brightness"
+#define BUTTON_FILE "/sys/class/sec/sec_touchkey/brightness"
+#define LED_BLINK "/sys/class/sec/led/led_blink"
+
+#define COLOR_MASK 0x00ffffff
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
-
-char const*const PANEL_FILE = "/sys/class/backlight/panel/brightness";
-char const*const BUTTON_FILE = "/sys/class/sec/sec_touchkey/brightness";
-
-char const*const LED_BLINK = "/sys/class/sec/led/led_blink";
 
 struct led_config {
     unsigned int color;
@@ -79,23 +78,6 @@ static int write_int(char const *path, int value)
     }
 }
 
-/* Currently unused.
-static int read_int(char const *path)
-{
-    int fd;
-    char buffer[2];
-
-    fd = open(path, O_RDONLY);
-
-    if (fd >= 0) {
-        read(fd, buffer, 1);
-    }
-    close(fd);
-
-    return atoi(buffer);
-}
-*/
-
 static int write_str(char const *path, const char* value)
 {
     int fd;
@@ -121,30 +103,14 @@ static int write_str(char const *path, const char* value)
 
 static int rgb_to_brightness(struct light_state_t const *state)
 {
-    int color = state->color & 0x00ffffff;
+    int color = state->color & COLOR_MASK;
 
     return ((77*((color>>16) & 0x00ff))
         + (150*((color>>8) & 0x00ff)) + (29*(color & 0x00ff))) >> 8;
 }
 
-/* Previously used by set_light_leds.
-static int get_calibrated_color(struct light_state_t const *state, int brightness)
-{
-    int red = (state->color >> 16) & 0xFF;
-    int green = ((state->color >> 8) & 0xFF) * 0.7;
-    int blue = (state->color & 0x00FF) * 0.8;
-
-    return (((red * brightness) / 255) << 16) + (((green * brightness) / 255) << 8) + ((blue * brightness) / 255);
-}
-*/
-
-static int is_lit(struct light_state_t const* state)
-{
-    return state->color & 0x00ffffff;
-}
-
-static int set_light_backlight(struct light_device_t *dev,
-            struct light_state_t const *state)
+static int set_light_backlight(struct light_device_t *dev __unused,
+                               struct light_state_t const *state)
 {
     int err = 0;
     int brightness = rgb_to_brightness(state);
@@ -156,19 +122,19 @@ static int set_light_backlight(struct light_device_t *dev,
     return err;
 }
 
-static int
-set_light_buttons(struct light_device_t* dev,
-        struct light_state_t const* state)
+static int set_light_buttons(struct light_device_t* dev __unused,
+                             struct light_state_t const* state)
 {
     int err = 0;
-    int on = is_lit(state);
+    int on = (state->color & COLOR_MASK);
 
     pthread_mutex_lock(&g_lock);
-    err = write_int(BUTTON_FILE, on?1:0);
+
+    err = write_int(BUTTON_FILE, on ? 1 : 0);
+
     pthread_mutex_unlock(&g_lock);
 
     return err;
-
 }
 
 static int close_lights(struct light_device_t *dev)
@@ -187,19 +153,25 @@ static int write_leds(const struct led_config *led)
 
     char blink[32];
     int count, err;
+    int color;
 
     if (led == NULL)
         led = &led_off;
 
-    if ((count = snprintf(blink, sizeof(blink)-1, "0x%08x %d %d", led->color,
-                          led->delay_on, led->delay_off)) < 0) {
+    count = snprintf(blink,
+                     sizeof(blink) - 1,
+                     "0x%08x %d %d",
+                     led->color,
+                     led->delay_on,
+                     led->delay_off);
+    if (count < 0) {
         return -errno;
     } else if ((unsigned int)count >= sizeof(blink)-1) {
         ALOGE("%s: Truncated string: blink=\"%s\".", __func__, blink);
         return -EINVAL;
     }
 
-    ALOGD("%s: color=0x%08x, delay_on=%d, delay_off=%d, blink=\"%s\".",
+    ALOGV("%s: color=0x%08x, delay_on=%d, delay_off=%d, blink=\"%s\".",
           __func__, led->color, led->delay_on, led->delay_off, blink);
 
     /* Add '\n' here to make the above log message clean. */
@@ -218,11 +190,12 @@ static int set_light_leds(struct light_state_t const *state, int type)
     struct led_config *led;
     int err = 0;
 
-    ALOGD("%s: type=%d, color=0x%010x, fM=%d, fOnMS=%d, fOffMs=%d.", __func__,
+    ALOGV("%s: type=%d, color=0x%010x, fM=%d, fOnMS=%d, fOffMs=%d.", __func__,
           type, state->color,state->flashMode, state->flashOnMS, state->flashOffMS);
 
-    if (type < 0 || (unsigned int)type >= sizeof(g_leds)/sizeof(g_leds[0]))
+    if (type < 0 || (size_t)type >= sizeof(g_leds)/sizeof(g_leds[0])) {
         return -EINVAL;
+    }
 
     /* type is one of:
      *   0. battery
@@ -245,7 +218,7 @@ static int set_light_leds(struct light_state_t const *state, int type)
         return -EINVAL;
     }
 
-    led->color = state->color & 0x00ffffff;
+    led->color = state->color & COLOR_MASK;
 
     if (led->color > 0) {
         /* This LED is lit. */
@@ -278,20 +251,20 @@ switched:
     return err;
 }
 
-static int set_light_leds_battery(struct light_device_t *dev,
-            struct light_state_t const *state)
+static int set_light_leds_battery(struct light_device_t *dev __unused,
+                                  struct light_state_t const *state)
 {
     return set_light_leds(state, 0);
 }
 
-static int set_light_leds_notifications(struct light_device_t *dev,
-            struct light_state_t const *state)
+static int set_light_leds_notifications(struct light_device_t *dev __unused,
+                                        struct light_state_t const *state)
 {
     return set_light_leds(state, 1);
 }
 
-static int set_light_leds_attention(struct light_device_t *dev,
-            struct light_state_t const *state)
+static int set_light_leds_attention(struct light_device_t *dev __unused,
+                                    struct light_state_t const *state)
 {
     struct light_state_t fixed;
 
@@ -309,6 +282,7 @@ static int set_light_leds_attention(struct light_device_t *dev,
          * just makes for a slightly-dimmer LED. */
         if (fixed.flashOnMS > 0 && fixed.flashOffMS == 0)
             fixed.flashMode = LIGHT_FLASH_NONE;
+            fixed.color = 0x000000ff;
         break;
     }
 
@@ -359,7 +333,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "Exynos3 Lights Module",
+    .name = "Samsung Lights Module",
     .author = "The CyanogenMod Project",
     .methods = &lights_module_methods,
 };

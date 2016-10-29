@@ -19,8 +19,9 @@ LOCAL_PATH := $(call my-dir)
 # hw/<OVERLAY_HARDWARE_MODULE_ID>.<ro.product.board>.so
 include $(CLEAR_VARS)
 
-LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
+
 LOCAL_C_INCLUDES := hardware/samsung/universal3470/include
 
 LOCAL_SRC_FILES := 	\

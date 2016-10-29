@@ -13,6 +13,17 @@ include $(SAMSUNG_HW_PATH)/ril/Android.mk
 
 ifeq ($(BOARD_USES_BLOB_LESS),true)
 
+BOARD_USE_V4L2 := true
+BOARD_USE_V4L2_ION := true
+BOARD_USE_SAMSUNG_COLORFORMAT := true
+BOARD_FIX_NATIVE_COLOR_FORMAT := true
+BOARD_NONBLOCK_MODE_PROCESS := true
+BOARD_USE_STOREMETADATA := true
+BOARD_USE_METADATABUFFERTYPE := true
+BOARD_USES_MFC_FPS := true
+BOARD_USE_S3D_SUPPORT := true
+BOARD_USE_EXYNOS_OMX := true
+
 include $(SAMSUNG_HW_PATH)/libexynosutils/Android.mk
 include $(SAMSUNG_HW_PATH)/libhwjpeg/Android.mk
 include $(SAMSUNG_HW_PATH)/libswconverter/Android.mk

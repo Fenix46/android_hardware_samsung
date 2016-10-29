@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "Modem Loader"
+#define LOG_TAG "modemloader"
 #define LOG_NDEBUG 0
 
 #include <stdarg.h>

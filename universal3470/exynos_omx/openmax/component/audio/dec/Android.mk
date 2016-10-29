@@ -14,6 +14,6 @@ LOCAL_C_INCLUDES := $(EXYNOS_OMX_INC)/khronos \
 	$(EXYNOS_OMX_TOP)/core \
 	$(EXYNOS_OMX_COMPONENT)/common \
 	$(EXYNOS_OMX_COMPONENT)/audio/dec \
-	hardware/samsung/universal3470/multimedia/exynos_omx/codecs/exynos_codecs/audio/exynos3/srp/alp/include
+	hardware/samsung/universal3470/exynos_omx/codecs/exynos_codecs/audio/exynos3/srp/alp/include
 
 include $(BUILD_STATIC_LIBRARY)

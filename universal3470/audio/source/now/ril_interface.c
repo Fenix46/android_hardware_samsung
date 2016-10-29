@@ -19,7 +19,7 @@
 
 #include <dlfcn.h>
 #include <stdlib.h>
-
+#include <string.h>
 #include <utils/Log.h>
 #include <cutils/properties.h>
 #include <errno.h>

@@ -29,6 +29,6 @@ include $(SAMSUNG_HW_PATH)/libstagefrighthw/Android.mk
 include $(SAMSUNG_HW_PATH)/macloader/Android.mk
 include $(SAMSUNG_HW_PATH)/wifiloader/Android.mk
 include $(SAMSUNG_HW_PATH)/gralloc/Android.mk
-include $(SAMSUNG_HW_PATH)/libmemtrack/Android.mk
+include $(SAMSUNG_HW_PATH)/exynos_omx/Android.mk
 
 endif

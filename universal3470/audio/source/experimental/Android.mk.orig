@@ -14,52 +14,41 @@
 
 LOCAL_PATH := $(call my-dir)
 
-PROPRIETARY_PATH := ../../../../../vendor/samsung/$(TARGET_DEVICE)/proprietary
-CONFIG_PATH := ../config
+ifneq ($(filter true,$(TARGET_COMMON_EXYNOS3_AUDIO_FROM_SOURCE)),)
 
-
-# Audio HAL Wrapper
+# Audio HAL
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := audio.primary.universal3470
-LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_MODULE := audio.primary.$(TARGET_BOOTLOADER_BOARD_NAME)
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := audio_hw.c
+LOCAL_SRC_FILES := audio_hw.c ril_interface.c
 
 LOCAL_C_INCLUDES += \
-	external/tinyalsa/include
+	external/tinyalsa/include \
+	$(call include-path-for, audio-effects) \
+	$(call include-path-for, audio-utils) \
+	$(call include-path-for, audio-route)
 
-LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libdl libhardware
-
-include $(BUILD_SHARED_LIBRARY)
-
-
-# Audio Zoom Dummy
-# Samsungs Lollipop implementation contains text relocations
-# which are not supported in Android N anymore.
-# Use a dummy implementation instead.
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := libsamsungRecord_zoom
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := audio_zoom.cpp
-LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libaudioroute libdl
 
 include $(BUILD_SHARED_LIBRARY)
 
 
-# Stock Audio HAL
+# Mixer configurations
 include $(CLEAR_VARS)
 
-LOCAL_MODULE		:= audio.wrapper.universal3470
-LOCAL_MODULE_TAGS	:= optional
-LOCAL_MODULE_SUFFIX 	:= .so
-LOCAL_SRC_FILES		:= $(PROPRIETARY_PATH)/lib/hw/audio.primary.kminilte.so
-LOCAL_MODULE_CLASS 	:= SHARED_LIBRARIES
-LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_MODULE := mixer_paths.xml
+LOCAL_MODULE_TAGS := optional eng
+LOCAL_MODULE_CLASS := ETC
+
+LOCAL_SRC_FILES := mixer_paths.xml
+
+LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)
 
 include $(BUILD_PREBUILT)
+<<<<<<< Updated upstream
 
 
 # tinyucm configuration
@@ -68,7 +57,9 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := tinyucm.conf
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(CONFIG_PATH)/tinyucm.conf
+
+LOCAL_SRC_FILES := tinyucm.conf
+
 LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)
 
 include $(BUILD_PREBUILT)
@@ -80,7 +71,13 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := default_gain.conf
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(CONFIG_PATH)/default_gain.conf
+
+LOCAL_SRC_FILES := default_gain.conf
+
 LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)
 
 include $(BUILD_PREBUILT)
+
+endif
+=======
+>>>>>>> Stashed changes

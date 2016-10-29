@@ -6,7 +6,7 @@ LOCAL_CLANG_CFLAGS += -Wno-c++11-narrowing
 
 # HAL module implemenation stored in
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_MODULE_RELATIVE_PATH := hw
 
 LOCAL_C_INCLUDES += \
 	hardware/samsung/universal3470/include \

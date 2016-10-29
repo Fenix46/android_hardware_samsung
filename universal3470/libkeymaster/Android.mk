@@ -20,7 +20,7 @@ include $(CLEAR_VARS)
 MOBICORE_PATH := hardware/samsung/universal3470/mobicore
 
 LOCAL_MODULE := keystore.universal3470
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := keymaster_mobicore.cpp tlcTeeKeymaster_if.c
 LOCAL_C_INCLUDES := \
 	$(MOBICORE_PATH)/daemon/ClientLib/public \

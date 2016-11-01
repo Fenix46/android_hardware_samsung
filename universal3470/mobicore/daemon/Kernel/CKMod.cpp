@@ -32,7 +32,6 @@
  */
 #include <cstdlib>
 #include <cstring>
-
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <errno.h>

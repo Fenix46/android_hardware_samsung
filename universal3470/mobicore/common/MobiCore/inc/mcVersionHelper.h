@@ -168,7 +168,7 @@
         uint32_t minor = MC_GET_MINOR_VERSION(version); \
         uint32_t ret = 0; \
         *errmsg = msgBuf; \
-        if ((major == majorRequired) && (minor >= minorRequired)) { \
+        if ((major == majorRequired) && (minor <= minorRequired)) { \
             snprintf(msgBuf, sizeof(msgBuf), \
                 #comp " version is %u.%u", major, minor); \
             ret = 1; \
@@ -186,7 +186,7 @@
         uint32_t major = MC_GET_MAJOR_VERSION(version); \
         uint32_t minor = MC_GET_MINOR_VERSION(version); \
         *errmsg = NULL; \
-        if ((major == majorRequired) && (minor >= minorRequired)) { \
+        if ((major == majorRequired) && (minor <= minorRequired)) { \
             return 1; \
         }; \
         return 0; \

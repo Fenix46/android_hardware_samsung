@@ -257,7 +257,7 @@ mcResult_t MobiCoreDevice::openSession(
         uint32_t len;
         uint32_t handle = cmdOpenSession->handle;
 
-        if (!findContiguousWsm(handle, deviceConnection->socketDescriptor, &tci, &len)) {
+        if (!findContiguousWsm(handle, &tci, &len)) {
             LOG_E("Failed to find contiguous WSM %u", handle);
             return MC_DRV_ERR_DAEMON_WSM_HANDLE_NOT_FOUND;
         }

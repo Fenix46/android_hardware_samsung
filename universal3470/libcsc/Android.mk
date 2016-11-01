@@ -11,8 +11,8 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 
 LOCAL_C_INCLUDES := \
     system/core/include \
-    hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/include/khronos \
-    hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+    hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/$(OMX_NAME)_omx/include/khronos \
+    hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/$(OMX_NAME)_omx/include/$(OMX_NAME) \
     hardware/samsung/universal3470/include
 
 LOCAL_CFLAGS := \
@@ -34,8 +34,8 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES := \
 	hardware/samsung/universal3470/include \
-	hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/include/khronos \
-	hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/include/$(OMX_NAME) \
+	hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/$(OMX_NAME)_omx/include/khronos \
+	hardware/samsung/universal3470/$(OMX_NAME)_omx/openmax/$(OMX_NAME)_omx/include/$(OMX_NAME) \
 	hardware/samsung/universal3470/libexynosutils
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
@@ -44,6 +44,7 @@ LOCAL_CFLAGS :=
 
 LOCAL_MODULE := libcsc
 
+LOCAL_PRELINK_MODULE := false
 
 LOCAL_ARM_MODE := arm
 

@@ -13,11 +13,12 @@ LOCAL_SRC_FILES := \
 	csc_ARGB8888_to_YUV420SP_NEON.s
 
 LOCAL_C_INCLUDES := \
-	hardware/samsung/universal3470/exynos_omx/openmax/include/khronos \
+	hardware/samsung/universal3470/exynos_omx/openmax/exynos_omx/include/khronos \
 	hardware/samsung/universal3470/include
 
 LOCAL_MODULE := libswconverter
 
+LOCAL_PRELINK_MODULE := false
 
 LOCAL_CFLAGS :=
 

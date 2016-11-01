@@ -598,7 +598,7 @@ void MobiCoreDriverDaemon::processMapBulkBuf(Connection *connection)
     }
 
     uint32_t secureVirtualAdr = NULL;
-    uint32_t pAddrL2 = (uint32_t)device->findWsmL2(cmd.handle, connection->socketDescriptor);
+    uint32_t pAddrL2 = (uint32_t)device->findWsmL2(cmd.handle);
 
     if (pAddrL2 == 0) {
         LOG_E("Failed to resolve WSM with handle %u", cmd.handle);

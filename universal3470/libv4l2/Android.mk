@@ -31,6 +31,7 @@ LOCAL_SHARED_LIBRARIES := \
 	libexynosutils 
 
 LOCAL_MODULE := libexynosv4l2
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)

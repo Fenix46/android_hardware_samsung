@@ -17,7 +17,6 @@
 
 #define LOG_TAG "ExynosJpegForCamera"
 #include <utils/Log.h>
-#include <string.h>
 
 #include "ExynosJpegEncoderForCamera.h"
 

@@ -53,12 +53,6 @@ void ril_register_set_wb_amr_callback(void *function, void *data)
     callback_data = data;
 }
 
-void ril_register_set_dha_callback(void *function, void *data)
-{
-    _audio_set_wb_amr_callback = function;
-    callback_data = data;
-}
-
 /* This is the callback function that the RIL uses to
 set the wideband AMR state */
 static int ril_set_wb_amr_callback(void *ril_client,

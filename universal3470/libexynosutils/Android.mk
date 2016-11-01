@@ -15,6 +15,7 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
+LOCAL_PRELINK_MODULE := false
 LOCAL_SHARED_LIBRARIES := liblog libutils libcutils
 
 LOCAL_CFLAGS += -DEXYNOS_PLATFORM_ON_ANDROID
@@ -31,7 +32,8 @@ LOCAL_MODULE := libexynosutils
 
 ifeq ($(TARGET_BOARD_PLATFORM),exynos3)
 LOCAL_SRC_FILES += exynos5_format_v4l2.c
-LOCAL_C_INCLUDES += hardware/samsung/universal3470/include
+LOCAL_C_INCLUDES += \
+	hardware/samsung/universal3470/include
 endif
 
 include $(BUILD_SHARED_LIBRARY)

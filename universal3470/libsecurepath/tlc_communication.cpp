@@ -15,7 +15,7 @@
  */
 
 #include <stdlib.h>
-
+#include <string.h>
 #include "tlc_communication.h"
 
 #define LOG_TAG "tlc_communication"

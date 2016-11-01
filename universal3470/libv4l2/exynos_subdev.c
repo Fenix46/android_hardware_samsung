@@ -33,7 +33,6 @@
 #include <sys/types.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
-#include <string.h>
 
 #include "exynos_v4l2.h"
 

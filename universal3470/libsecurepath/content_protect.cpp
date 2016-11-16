@@ -15,7 +15,7 @@
  */
 
 #include <stdio.h>
-
+#include <string.h>
 #include "tlwvdrm_api.h"
 #define LOG_TAG "drm_content_protect"
 #include "log.h"

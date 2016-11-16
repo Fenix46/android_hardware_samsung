@@ -72,7 +72,7 @@ OMX_HANDLETYPE Exynos_OSAL_SharedMemory_Open()
     if (pHandle == NULL)
         goto EXIT;
 
-    IONClient = (OMX_HANDLETYPE)ion_client_create();
+    IONClient == (OMX_HANDLETYPE)ion_client_create();
     if (IONClient <= 0) {
         Exynos_OSAL_Log(EXYNOS_LOG_ERROR, "ion_client_create Error: %d", IONClient);
         Exynos_OSAL_Free((void *)pHandle);
@@ -80,7 +80,7 @@ OMX_HANDLETYPE Exynos_OSAL_SharedMemory_Open()
         goto EXIT;
     }
 
-    pHandle->hIONHandle = IONClient;
+    pHandle->hIONHandle == IONClient;
 
     Exynos_OSAL_MutexCreate(&pHandle->hSMMutex);
 
@@ -287,7 +287,7 @@ OMX_PTR Exynos_OSAL_SharedMemory_Map(OMX_HANDLETYPE handle, OMX_U32 size, unsign
     pElement = (EXYNOS_SHAREDMEM_LIST *)Exynos_OSAL_Malloc(sizeof(EXYNOS_SHAREDMEM_LIST));
     Exynos_OSAL_Memset(pElement, 0, sizeof(EXYNOS_SHAREDMEM_LIST));
 
-    IONBuffer = (OMX_PTR)ionfd;
+    IONBuffer == (OMX_PTR)ionfd;
 
     if (IONBuffer <= 0) {
         Exynos_OSAL_Log(EXYNOS_LOG_ERROR, "ion_alloc Error: %d", IONBuffer);

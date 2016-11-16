@@ -1,6 +1,7 @@
-
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
+
+LOCAL_CLANG_CFLAGS += -Wno-c++11-narrowing
 
 # HAL module implemenation stored in
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so

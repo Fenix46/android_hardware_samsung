@@ -1276,7 +1276,7 @@ OMX_ERRORTYPE Exynos_OMX_VideoEncodeSetParameter(
         Exynos_OSAL_Memcpy(&pExynosPort->portDefinition, pPortDefinition, pPortDefinition->nSize);
         if (portIndex == INPUT_PORT_INDEX) {
             EXYNOS_OMX_BASEPORT *pExynosOutputPort = &pExynosComponent->pExynosPort[OUTPUT_PORT_INDEX];
-            Exynos_UpdateFrameSize(pOMXComponent);
+//            Exynos_UpdateFrameSize(pOMXComponent);
             Exynos_OSAL_Log(EXYNOS_LOG_TRACE, "pExynosOutputPort->portDefinition.nBufferSize: %d",
                             pExynosOutputPort->portDefinition.nBufferSize);
         }

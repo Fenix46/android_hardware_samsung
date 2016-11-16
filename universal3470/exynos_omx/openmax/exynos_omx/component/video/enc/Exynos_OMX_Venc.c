@@ -325,7 +325,7 @@ OMX_BOOL Exynos_CSC_InputData(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX_DATA 
             OMX_U32 stride;
             int i;
 
-            csc_src_color_format = omx_2_hal_pixel_format((unsigned int)Exynos_OSAL_GetANBColorFormat(ppBuf[0]));
+            //csc_src_color_format = omx_2_hal_pixel_format((unsigned int)Exynos_OSAL_GetANBColorFormat(ppBuf[0]));
             Exynos_OSAL_LockANBHandle((OMX_U32)ppBuf[0], nFrameWidth, nFrameHeight, OMX_COLOR_FormatAndroidOpaque, &stride, planes);
 
 #if defined(USE_CSC_GSCALER) || defined(USE_CSC_G2D)
@@ -481,8 +481,8 @@ OMX_BOOL Exynos_Preprocessor_InputData(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_
                         srcInputData->buffer.multiPlaneBuffer.fd[1] = planes[1].fd;
                     } else {
                         /* kMetadataBufferTypeCameraSource */
-                        srcInputData->buffer.multiPlaneBuffer.fd[0] = ppBuf[0];
-                        srcInputData->buffer.multiPlaneBuffer.fd[1] = ppBuf[1];
+                        srcInputData->buffer.multiPlaneBuffer.fd[0] == ppBuf[0];
+                        srcInputData->buffer.multiPlaneBuffer.fd[1] == ppBuf[1];
                     }
                     allocSize[0] = nFrameWidth * nFrameHeight;
                     allocSize[1] = nFrameWidth * nFrameHeight >> 1;
@@ -491,7 +491,7 @@ OMX_BOOL Exynos_Preprocessor_InputData(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_
                         srcInputData->buffer.multiPlaneBuffer.dataBuffer[plane] =
                             Exynos_OSAL_SharedMemory_IONToVirt(pVideoEnc->hSharedMemory, srcInputData->buffer.multiPlaneBuffer.fd[plane]);
                         if(srcInputData->buffer.multiPlaneBuffer.dataBuffer[plane] == NULL) {
-                            srcInputData->buffer.multiPlaneBuffer.dataBuffer[plane] =
+                            srcInputData->buffer.multiPlaneBuffer.dataBuffer[plane] ==
                                 Exynos_OSAL_SharedMemory_Map(pVideoEnc->hSharedMemory, allocSize[plane], srcInputData->buffer.multiPlaneBuffer.fd[plane]);
                         }
                     }
@@ -678,7 +678,7 @@ OMX_ERRORTYPE Exynos_OMX_ExtensionSetup(OMX_HANDLETYPE hComponent)
     if (exynosInputPort->bStoreMetaData == OMX_TRUE) {
         Exynos_OSAL_GetInfoFromMetaData((OMX_BYTE)srcInputUseBuffer->bufferHeader->pBuffer, ppBuf);
         if (eColorFormat == OMX_COLOR_FormatAndroidOpaque) {
-            pVideoEnc->ANBColorFormat = Exynos_OSAL_GetANBColorFormat(ppBuf[0]);
+        //    pVideoEnc->ANBColorFormat = Exynos_OSAL_GetANBColorFormat(ppBuf[0]);
             if ((pVideoEnc->ANBColorFormat == OMX_COLOR_FormatYUV420SemiPlanar) ||
                 (pVideoEnc->ANBColorFormat == OMX_SEC_COLOR_FormatNV12Tiled)) {
                 exynosInputPort->bufferProcessType = BUFFER_SHARE;

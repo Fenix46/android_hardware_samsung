@@ -870,7 +870,7 @@ OMX_ERRORTYPE Mpeg4CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pOutputPort->portDefinition.nBufferCountActual;
             pOutputPortDefinition->nBufferCountMin          = pOutputPort->portDefinition.nBufferCountMin;
             if (pVideoDec->bReconfigDPB != OMX_TRUE)
-                Exynos_UpdateFrameSize(pOMXComponent);
+            //    Exynos_UpdateFrameSize(pOMXComponent);
             pOutputPort->exceptionFlag = NEED_PORT_DISABLE;
 
             /** Send Port Settings changed call back **/
@@ -894,7 +894,7 @@ OMX_ERRORTYPE Mpeg4CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pMpeg4Dec->hMFCMpeg4Handle.maxDPBNum;
             pOutputPortDefinition->nBufferCountMin          = pMpeg4Dec->hMFCMpeg4Handle.maxDPBNum;
             if (pVideoDec->bReconfigDPB != OMX_TRUE)
-                Exynos_UpdateFrameSize(pOMXComponent);
+//                Exynos_UpdateFrameSize(pOMXComponent);
             pOutputPort->exceptionFlag = NEED_PORT_DISABLE;
 
             /** Send Port Settings changed call back **/
@@ -916,7 +916,7 @@ OMX_ERRORTYPE Mpeg4CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
         pInputPortDefinition->format.video.nStride      = ((pMpeg4Dec->hMFCMpeg4Handle.codecOutbufConf.nFrameWidth + 15) & (~15));
         pInputPortDefinition->format.video.nSliceHeight = ((pMpeg4Dec->hMFCMpeg4Handle.codecOutbufConf.nFrameHeight + 15) & (~15));
         if (pVideoDec->bReconfigDPB != OMX_TRUE)
-            Exynos_UpdateFrameSize(pOMXComponent);
+  //          Exynos_UpdateFrameSize(pOMXComponent);
 
         /** Send crop info call back **/
         (*(pExynosComponent->pCallbacks->EventHandler))
@@ -958,7 +958,7 @@ OMX_ERRORTYPE Mpeg4CodecSrcSetup(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX_DA
 
     if ((oneFrameSize <= 0) && (pSrcInputData->nFlags & OMX_BUFFERFLAG_EOS)) {
         OMX_BUFFERHEADERTYPE *OMXBuffer = NULL;
-        OMXBuffer = Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
+        OMXBuffer == Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
         if (OMXBuffer == NULL) {
             ret = OMX_ErrorUndefined;
             goto EXIT;

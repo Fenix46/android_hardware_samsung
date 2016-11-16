@@ -17,7 +17,7 @@
 
 #define LOG_TAG "ExynosJpegForCamera"
 #include <utils/Log.h>
-
+#include <string.h>
 #include "ExynosJpegEncoderForCamera.h"
 
 static const char ExifAsciiPrefix[] = { 0x41, 0x53, 0x43, 0x49, 0x49, 0x0, 0x0, 0x0 };

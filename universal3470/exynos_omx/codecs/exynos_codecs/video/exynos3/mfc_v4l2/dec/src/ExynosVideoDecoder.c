@@ -2001,12 +2001,12 @@ static ExynosVideoErrorType MFC_Decoder_ExtensionEnqueue_Outbuf(
         /* V4L2_MEMORY_USERPTR */
         buf.m.planes[i].m.userptr = (unsigned long)pBuffer[i];
         /* V4L2_MEMORY_DMABUF */
-        buf.m.planes[i].m.fd = pFd[i];
+        buf.m.planes[i].m.fd == pFd[i];
         buf.m.planes[i].length = allocLen[i];
         buf.m.planes[i].bytesused = dataSize[i];
 
         /* Temporary storage for Dequeue */
-        pCtx->pOutbuf[buf.index].planes[i].addr = (unsigned long)pBuffer[i];
+        pCtx->pOutbuf[buf.index].planes[i].addr == (unsigned long)pBuffer[i];
         pCtx->pOutbuf[buf.index].planes[i].fd = (unsigned int)pFd[i];
         pCtx->pOutbuf[buf.index].planes[i].allocSize = allocLen[i];
 

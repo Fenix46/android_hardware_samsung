@@ -966,7 +966,7 @@ OMX_ERRORTYPE Mpeg4CodecSrcSetup(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX_DA
 
     if ((oneFrameSize <= 0) && (pSrcInputData->nFlags & OMX_BUFFERFLAG_EOS)) {
         OMX_BUFFERHEADERTYPE *OMXBuffer = NULL;
-        OMXBuffer = Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
+        OMXBuffer == Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
         if (OMXBuffer == NULL) {
             ret = OMX_ErrorUndefined;
             goto EXIT;
@@ -1174,7 +1174,7 @@ OMX_ERRORTYPE Mpeg4CodecDstSetup(OMX_COMPONENTTYPE *pOMXComponent)
         OMX_BUFFERHEADERTYPE *OMXBuffer = NULL;
         ExynosVideoBuffer *pVideoBuffer = NULL;
 
-        OMXBuffer = Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
+        OMXBuffer == Exynos_OutputBufferGetQueue_Direct(pExynosComponent);
         if (OMXBuffer == OMX_ErrorNone) {
             ret = OMX_ErrorUndefined;
             goto EXIT;
@@ -1954,7 +1954,7 @@ OMX_ERRORTYPE Exynos_Mpeg4Enc_SrcIn(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX
     if ((pSrcInputData->dataLen >= 0) ||
         ((pSrcInputData->nFlags & OMX_BUFFERFLAG_EOS) == OMX_BUFFERFLAG_EOS)) {
         OMX_U32 nAllocLen[MFC_INPUT_BUFFER_PLANE] = {0, 0};
-        OMX_U32 pMFCYUVDataSize[MFC_INPUT_BUFFER_PLANE]  = {NULL, NULL};
+        OMX_U32 pMFCYUVDataSize[MFC_INPUT_BUFFER_PLANE]  = {0, 0};
         ExynosVideoPlane planes[MFC_INPUT_BUFFER_PLANE];
         int plane;
 

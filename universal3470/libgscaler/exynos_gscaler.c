@@ -1684,9 +1684,9 @@ static int exynos_gsc_out_run(void *handle,
     buf.m.planes = planes;
     buf.reserved = src_img->acquireFenceFd;
 
-    gsc_handle->src.addr[0] = src_img->yaddr;
-    gsc_handle->src.addr[1] = src_img->uaddr;
-    gsc_handle->src.addr[2] = src_img->vaddr;
+    //gsc_handle->src.addr[0] = yaddr;
+    //gsc_handle->src.addr[1] = uaddr;
+    //gsc_handle->src.addr[2] = vaddr;
 
     if (get_plane_size(src_color_space, plane_size,
         gsc_handle->src_img.fw * gsc_handle->src_img.fh, src_planes) != true) {
